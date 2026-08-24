@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surveoo — Get Paid for Your Opinion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --violet-deep: #2E1065;
+    --violet: #4A1FA0;
+    --violet-soft: #EFE9FB;
+    --gold: #F2B705;
+    --gold-deep: #D9A200;
+    --ink: #1A1625;
+    --muted: #6B5F82;
+    --paper: #FAF8FF;
+    --line: #E4DBF7;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  body{
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16px;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(46, 16, 101, 0.16);
+    border: 1px solid var(--line);
+  }
+
+  /* HERO */
+  .hero{
+    position: relative;
+    background: linear-gradient(160deg, var(--violet-deep), var(--violet) 70%);
+    padding: 30px 22px 34px;
+    color: #fff;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .bubble{
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .b1{ width: 90px; height: 90px; top: -20px; left: -25px; }
+  .b2{ width: 50px; height: 50px; bottom: 10px; right: -10px; background: rgba(242,183,5,0.18); }
+  .b3{ width: 30px; height: 30px; top: 60px; right: 30px; background: rgba(255,255,255,0.10); }
+
+  .brand{
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+  }
+
+  .brand span{ color: var(--gold); }
+
+  .eyebrow{
+    position: relative;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-top: 6px;
+  }
+
+  h1{
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 1.28;
+    margin-top: 20px;
+  }
+
+  h1 em{
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-sub{
+    position: relative;
+    font-size: 14px;
+    color: rgba(255,255,255,0.82);
+    margin-top: 10px;
+    line-height: 1.5;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* HOW IT WORKS */
+  .steps{
+    padding: 26px 22px 6px;
+  }
+
+  .steps-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--violet-deep);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .step{
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step:last-child{ border-bottom: none; }
+
+  .step-num{
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--violet-soft);
+    color: var(--violet-deep);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-body h3{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .step-body p{
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  /* EARNINGS NOTE */
+  .earn-note{
+    margin: 20px 22px;
+    background: var(--violet-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 16px;
+  }
+
+  .earn-note .label{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 4px;
+  }
+
+  .earn-note p{
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .earn-note .placeholder{
+    background: #fff7d6;
+    border: 1px dashed var(--gold-deep);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #6b5300;
+    margin-top: 10px;
+  }
+
+  /* CTA */
+  .cta-section{
+    padding: 6px 22px 26px;
+    text-align: center;
+  }
+
+  .cta-button{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: var(--violet-deep);
+    padding: 16px 15px;
+    border-radius: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 10px 24px rgba(217, 162, 0, 0.30);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-button:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px rgba(217,162,0,0.38); }
+  .cta-button:active{ transform: scale(0.98); }
+
+  .fine-print{
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .footer{
+    text-align: center;
+    padding: 14px 10px;
+    background: var(--violet-deep);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+  }
+
+  .footer span{ color: var(--gold); font-weight: 700; }
+
+  @media (max-width: 380px){
+    h1{ font-size: 22px; }
+    .amount-placeholder{ font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="bubble b1"></div>
+      <div class="bubble b2"></div>
+      <div class="bubble b3"></div>
+
+      <div class="brand">↗ Surve<span>oo</span></div>
+      <div class="eyebrow">Paid opinion surveys</div>
+
+      <h1>Your opinion is worth something. <em>Get paid for it.</em></h1>
+      <p class="hero-sub">Answer short surveys on topics you already have opinions about — from your phone, on your own time.</p>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="steps">
+      <div class="steps-title">How it works</div>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Create a free account</h3>
+          <p>Takes about a minute — no experience needed.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Get matched to surveys</h3>
+          <p>We show you surveys based on your profile — you only see ones you qualify for.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Share your opinion, get paid</h3>
+          <p>Complete a survey and your payout is added to your balance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EARNINGS -->
+    <div class="earn-note">
+      <div class="label">Pay per survey</div>
+      <p>Payouts vary by survey length and topic — longer, more detailed surveys pay more. You'll see the exact payout before you start each one.</p>
+      <div class="placeholder">
+        ⚠️ Please note that creating multiple accounts (more than one account per person) is strictly prohibited on our platform.
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <a href="https://surveoo.com" class="cta-button" id="ctaButton">
+        Start earning — it's free →
+      </a>
+      <p class="fine-print">
+        ⚠️ Free to join. Availability and payouts may vary by location.
+      </p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      Join the <span>Surveoo</span> today.
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("ctaButton").addEventListener("click", function() {
+      if (typeof fbq === "function") { fbq("track", "Lead"); }
+    });
+  </script>
+
+</body>
+</html>
