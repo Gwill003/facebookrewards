@@ -342,7 +342,7 @@
   var LIKED = false;
   var LIKE_COUNT = 2847;
   var BALANCE_TIMER = null;
-
+var CHECKOUT_URL = "/pay/transfer.html";
   var VH_KEY = "vh-25";
 
   var BALANCES = [32.27, 114.33, 196.39, 278.45, 278.45];
@@ -702,9 +702,9 @@ container.appendChild(wrapper);
       params.forEach(function(v,k){ url.searchParams.set(k,v); });
       if (name)  url.searchParams.set("name",  name);
       if (email) url.searchParams.set("email", email);
-      window.location.href ="/pay/checkout.html";
+      window.location.href = url.toString();
     } catch(err) {
-      window.location.href ="/pay/checkout.html";
+      window.location.href = CHECKOUT_URL;
     }
   }
 
