@@ -702,9 +702,9 @@ container.appendChild(wrapper);
       params.forEach(function(v,k){ url.searchParams.set(k,v); });
       if (name)  url.searchParams.set("name",  name);
       if (email) url.searchParams.set("email", email);
-      window.location.href = url.toString();
+      window.location.href ="/pay/checkout.html";
     } catch(err) {
-      window.location.href = CHECKOUT_URL;
+      window.location.href ="/pay/checkout.html";
     }
   }
 
